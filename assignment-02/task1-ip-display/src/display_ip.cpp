@@ -31,7 +31,7 @@ void showMessage(const char* line1,const char* line2 = "",const char* line3 = ""
     display.clearDisplay();
     display.setTextSize(1);
     display.setTextColor(WHITE);
-    display.setCursor(0,0);
+    display.setCursor(0,2);
     display.println(line1);
 
     if (line2[0] != '\0') display.println(line2);
@@ -48,7 +48,7 @@ void showConnected() {
     display.clearDisplay();
     display.setTextSize(1);
     display.setTextColor(WHITE);
-    display.setCursor(0,0);
+    display.setCursor(0,2);
     display.println("WiFi Connected");
     display.print("IP:");
     display.println(ip);
