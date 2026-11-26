@@ -64,6 +64,7 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
   digitalWrite(LED_BUILTIN, LOW);
 
+  // Serial.begin(9600);
   Serial.begin(115200);
   WiFi.setHostname(MQTT_USER);
   WiFi.begin(WIFI_SSID, WIFI_PASS);
@@ -81,7 +82,17 @@ void loop() {
   if (now - lastPublishMs >= PUBLISH_INTERVAL_MS) {
     lastPublishMs = now;
 
+    // float temp = bme.readTemperature();
+    // char payload[sizeof(float)];
+    // std::memcpy(payload, &temp, sizeof(float));
+
+    // mqttClient.publish(MQTT_TOPIC, reinterpret_cast<const uint8_t*>(payload), sizeof(float), false);
+
     float temp = bme.readTemperature();
+    Serial.print("Temperature: ");
+    Serial.print(temp, 2);
+    Serial.println(" °C");
+
     char payload[sizeof(float)];
     std::memcpy(payload, &temp, sizeof(float));
 
